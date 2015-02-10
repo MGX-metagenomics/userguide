@@ -72,9 +72,9 @@
         \put(43,20){\parbox[t]{11cm}{{\lp@fr\lp@dep\par\lp@grp}}}
         \ifthenelse{\boolean{lp@seal}}{
           \ifthenelse{\boolean{lp@black}}{
-            \put(141.4,-200){\includegraphics{bilder/siegel.eps}}
+            \put(141.4,-200){\includegraphics{img/siegel.eps}}
             }{
-            \put(141.4,-200){\includegraphics{bilder/siegel.eps}}
+            \put(141.4,-200){\includegraphics{img/siegel.eps}}
             }}{}
       \end{picture}}
     }%
