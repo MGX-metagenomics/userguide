@@ -1,3 +1,6 @@
 *.aux
 main.log
 main.toc
+main.lof
+main.out
+main.lot
