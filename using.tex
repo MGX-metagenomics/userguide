@@ -33,7 +33,7 @@ To apply for a new project, include information about
 
 \begin{itemize}
   \item suggested \textit{project name}, e.g. MGX\_AcidMine
-  \item a short \textit{one-line description} of your project (''Acid Mine Drainage metagenome obtained from FIXME'')
+  \item a short \textit{one-line description} of your project (''Acid Mine Drainage metagenome'')
   \item a \textit{contact address} of a single person responsible for the project (PI or group leader)
   \item a \textit{list of all users} that should be granted project access, including
     \begin{itemize}
@@ -42,13 +42,14 @@ To apply for a new project, include information about
     \end{itemize}
 \end{itemize}
 
-MGX offers two different access levels (roles), which are assigned individually for each
+MGX offers different access levels (roles), which are assigned individually for each
 project: \\
 
 \begin{itemize}
+  \item{\textbf{Admins} are equal to Users (see below), but can grant access to additional users.}
   \item \textbf{Users} have full access to a MGX project and are able to define new or modify
 present datasets, import new sequences and execute analysis jobs. They are also able to
-delete all data associated with a project.\\
+delete all data associated with a project.
   \item \textbf{Guests} are provided read-only access to a project, i.e. they are able to access
 all information already present, view analysis results and export data; however, they are
 unable to perform new analysis or delete data from the project.
@@ -61,7 +62,7 @@ to carefully protect their login credentials and not to share them with any thir
 
 After installation, the MGX application is already preconfigured to connect to the 
 MGX server instance hosted at CeBiTec, Bielefeld University. In case a different MGX server
-should be used, the default server can be changed choosing Tools -> Options from the menu
+should be used, the default server can be changed choosing Tools $->$ Options from the menu
 and navigating to the MGX server tab (\ref{config-site}). While the site name can be freely
 chosen by the user, the server URL has to be entered as provided by the server administrators.
 
@@ -85,13 +86,23 @@ All communication between the MGX user interface and the MGX server is encrypted
 the standardized SSL (Secure Sockets Layer) protocol, ensuring confidentiality of 
 unpublished data and protecting the integrity of login credentials.
 
-
 \section{Browsing and exploring MGX projects}
 
 After successfully logging in, a new window is automatically opened. The MGX Explorer window
 lists all available projects a user is allowed to access, including both public as well as
 private projects. Projects are easily opened or closed by simply expanding the corresponding
-nodes in the project explorer window.\\
+nodes in the project explorer window (\ref{structure}).\\
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.4\textwidth]{img/projstructure}
+\caption[Project structure:]{Divided into three different parts, a MGX projects offers
+(from top to bottom) dedicated storage for files to be used by analysis pipelines, 
+managed reference sequences (including annotation data, if available) and general
+project data containing metadata as well as sequence datasets.}
+\label{structure}
+\end{figure}
+
 
 Each project contains metagenome datasets as well as structured storage, where user-provided
 databases can be uploaded to be used in custom analysis (\ref{custom}).
