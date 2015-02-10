@@ -12,7 +12,7 @@ clean:
 		rm -f *.aux *.log *.lof *.lot *.out *.toc $(TEXSRC).bbl $(TEXSRC).blg  
 
 realclean:	clean
-		rm -f $(TEXSRC).pdf cover.pdf
+		rm -f $(TEXSRC).pdf
 
 $(TEXSRC).aux:	main.tex
 		$(LATEX) $(TEXSRC).tex
