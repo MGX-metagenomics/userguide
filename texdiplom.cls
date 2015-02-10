@@ -1,0 +1,90 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{texdiplom}
+\RequirePackage{ifthen}
+
+\newcommand{\department}[1]{\def\lp@dep{#1}}
+\newcommand{\group}[1]{\def\lp@grp{#1}}
+\department{Technische Fakult\"at}
+\group{AG Genominformatik\\
+    Zentrum für Genomforschung}
+
+
+\newboolean{lp@blank}
+\setboolean{lp@blank}{false}
+\newboolean{lp@seal}
+\setboolean{lp@seal}{true}
+\newboolean{lp@black}
+\setboolean{lp@black}{true}
+
+\DeclareOption{blank}{\setboolean{lp@blank}{true}}
+\DeclareOption{black}{\setboolean{lp@seal}{true}\setboolean{lp@black}{true}}
+\DeclareOption{grey}{\setboolean{lp@seal}{true}\setboolean{lp@black}{false}}
+
+\DeclareOption{rbg}{\group{Rechnerbetriebsgruppe}}
+\DeclareOption{pi}{\group{AG Praktische Informatik\\
+    Zentrum für Genomforschung}}
+\DeclareOption{wbs}{\group{AG Wissensbasierte Systeme (K\"unstliche Intelligenz)}}
+\DeclareOption{ai}{\group{AG Angewandte Informatik}}
+\DeclareOption{ti}{\group{AG Technische Informatik}}
+\DeclareOption{rvs}{\group{AG Rechnernetze und Verteilte Systeme}}
+\DeclareOption{ni}{\group{AG Neuroinformatik}}
+\DeclareOption{dekan}{\group{Der Dekan}}
+\DeclareOption{sfb}{\department{Sonderforschungsbereich 360}
+  \group{Situierte K\"unstliche Kommunikatoren}}
+
+\ProcessOptions
+
+\LoadClass[a4paper,11pt,oneside,openright,headsepline]{scrbook}
+\RequirePackage{t1enc}%stoneserif
+\RequirePackage{syntax}
+\RequirePackage{courier}
+\ifthenelse{\boolean{lp@seal}}{
+  \RequirePackage{graphicx}
+}{}
+
+\newcommand{\lp@fb}{\fontsize{12}{15}\usefont{T1}{psx}{bx}{n}}
+\newcommand{\lp@fr}{\fontsize{12}{15}\usefont{T1}{psx}{m}{n}}
+
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{1ex}
+\setlength{\textwidth}{158mm}
+\setlength{\textheight}{208.5mm}
+\setlength{\oddsidemargin}{3.4mm} %im Original -3.4mm
+\setlength{\evensidemargin}{-3.4mm}
+
+\unitlength1mm
+\newcommand{\ps@titlepage}{%
+  \renewcommand{\@oddhead}{
+    \ifthenelse{\boolean{lp@blank}}{}{%
+      \begin{picture}(120,37)
+        \put(-20,8){\mbox{\vbox to 76bp{\vss%
+              \special{" 0.283 0.283 scale
+                newpath 100 0 moveto 600 0
+                lineto 600 166
+                lineto 200 166
+                lineto 200 266
+                lineto 0 266
+                lineto 0 66
+                lineto 100 66
+                lineto closepath gsave 0.6 setgray fill grestore}}}}
+        \put(2.222,26.888){\makebox(37.777,4.5)[l]{%
+            {\lp@fb Universit\"at \hfill Bielefeld}}}
+        \put(43,20){\parbox[t]{11cm}{{\lp@fr\lp@dep\par\lp@grp}}}
+        \ifthenelse{\boolean{lp@seal}}{
+          \ifthenelse{\boolean{lp@black}}{
+            \put(141.4,-200){\includegraphics{bilder/siegel.eps}}
+            }{
+            \put(141.4,-200){\includegraphics{bilder/siegel.eps}}
+            }}{}
+      \end{picture}}
+    }%
+  \renewcommand{\@oddfoot}{}%
+  }
+
+
+
+
+
+
+
+

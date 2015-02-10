@@ -1,0 +1,90 @@
+% $Id$
+%
+
+%\documentclass{scrbook}
+\documentclass[black,pi]{texdiplom}
+\usepackage{pslatex}
+\usepackage{varioref}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{fancyhdr}
+\usepackage{xspace}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\usepackage{afterpage}
+
+% remove from final version
+%\usepackage[all,light]{draftcopy}
+
+%\usepackage[Sonny]{fncychap}
+%\usepackage{moreverb}
+\usepackage{listings}
+\usepackage{ifpdf}
+\usepackage{float}
+
+\renewcommand{\sfdefault}{psx}
+\renewcommand{\rmdefault}{psx}
+\renewcommand{\ttdefault}{pcr}
+
+% no more than 2 floats per page
+%\setcounter{totalnumber}{2}
+
+% allow [H]
+%\restylefloat{figure}
+
+\lstset{basicstyle=\ttfamily \footnotesize,
+        showstringspaces=false,
+        float=tbp,
+        captionpos=b,
+        frame=single,
+        escapechar=\%,
+        language={}}
+
+
+\makeatother
+\sloppy
+
+\ifpdf
+  \DeclareGraphicsExtensions{.pdf,.png}
+\else
+  \DeclareGraphicsExtensions{.eps,.ps}
+\fi 
+
+\title{MGX User Guide}
+\author{Sebastian Jaenicke\\sjaenick@CeBiTec.Uni-Bielefeld.DE}
+
+\begin{document}
+\frontmatter
+\maketitle
+\cleardoublepage
+\newpage
+\thispagestyle{empty}
+
+\tableofcontents
+
+\mainmatter
+
+\include{installation}
+\include{using}
+\include{customanalysis}
+\include{extending}
+
+%\chapter{Literatur}
+
+%\bibliographystyle{gerplain}
+%\bibliography{literatur}
+\bibliographystyle{da}
+\bibliography{literatur}
+
+\listoffigures
+\listoftables
+
+% -----------------------------------------------------------
+%\backmatter
+\begin{appendix}
+
+\end{appendix}
+
+\end{document}

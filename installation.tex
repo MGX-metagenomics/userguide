@@ -1,0 +1,54 @@
+
+\chapter{Installation}
+\label{installation}
+
+\section{Prerequisites}
+
+MGX is a client/server application based on the Netbeans Platform and implemented
+in Java. To run the client application, the following dependencies have to be
+met:
+
+\begin{itemize}
+  \item Java Runtime Environment, 1.7 or later
+  \item Java FX 2.x
+  \item Supported Operating Systems: Linux, Windows XP, Windows 7
+  \item Memory requirements: >= 256MB RAM
+  \item a (preferably broadband) Internet connection
+\end{itemize}
+
+\subsection{Java}
+
+MGX requires a working Java Runtime Environment (JRE) to be installed on the computer. Typically,
+Java is already installed on most systems or can be obtained free of charge from \\
+\url{http://www.java.com/}.
+
+The installed Java version can be checked e.g. at \url{http://www.java.com/de/download/installed.jsp}.
+
+\subsection{Java FX}
+
+In addition to Java, MGX requires the presence of Java FX 2.x, which is available as a separate
+download from \url{http://www.oracle.com/technetwork/java/javafx/downloads/index.html}.
+
+\subsection{Supported Operating Systems}
+
+The MGX application is developed and regularly used on Linux-based systems, but has already
+successfully been used on computers running Windows XP and Windows 7.
+
+MacOS ? OpenJDK (FX?)?
+
+\subsection{Memory and disk requirements}
+
+256MB of available main memory are sufficient to run MGX. Installation of the software
+required about 60MB disk space.
+
+\subsection{Internet connection}
+
+The network communication protocol used by the MGX framework has been heavily optimized to
+allow usage even with low-throughput connections. Thus, typical usage of the application
+like visualization of analysis results does not require a lot of bandwidth, although
+overall performance may suffer with high-latency or low-bandwidth connections. However, as
+sequence datasets obtained by metagenome sequencing tend to be quite large, a broadband 
+connection is recommended at least for initial data upload to the MGX server or when exporting
+sequence data from a MGX project.
+
+
