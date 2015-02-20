@@ -30,14 +30,50 @@ development of custom analysis algorithms in a graphical way.}
 As Conveyor is actively developed and new tools are continously integrated, giving a thorough
 introduction is beyond the scope of this document. The most up-to-date documentation describing
 Conveyor itself and the Conveyor Designer in particular can be found at the Conveyor web
-site \url{http://conveyor.CeBiTec.Uni-Bielefeld.DE}
+site \url{http://www.uni-giessen.de/fbz/fb08/bioinformatik/software/Conveyor}.
 
-\section{Workflow requirements}
+\subsection{Getting started}
+
+In order to implement a custom workflow, the Conveyor Designer needs to be configured
+with a definition of available Conveyor plugins and node types. This is easily 
+achieved by importing a plugin dump file, which contains a list of data types and
+nodes provided by a Conveyor installation.
+
+To use the Designer to implement a workflow for the MGX framework, a corresponding
+plugin dump file can be obtained from within MGX by right-clicking on the 
+project name.
+
+\subsection{Workflow requirements}
 
 In order to design custom Conveyor workflows for later usage within the MGX platform, there
-are several constraints to be met which will be described in more detail.
+are several constraints to be met which will be described in more detail.\\
 
-need MGX node\\
+First of all, a dedicated \node{GetMGXJob} node (Figure \ref{getmgxjob}) has to be present within the workflow; in addition,
+this node has to be named "\textbf{mgx}". During execution of a pipeline within MGX, this node is
+configured via an external configuration file, providing required information about a jobs
+context, like e.g. access to a project database and associated storage.\\
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.5\textwidth]{img/login-screen}
+\caption[\node{GetMGXJob}]{The \node{GetMGXJob} node provides necessary context for executing a
+workflow within MGX, such as database access. By convention, this node has to be named \textbf{mgx}.}
+\label{getmgxjob}
+\end{figure}
+
+Access to metagenome DNA sequences is provided via the \node{ReadCSF} node, which will provide
+all metagenome sequences for a sequencing run object within MGX, except those for which the 
+``discard'' flag has been set. As pipelines are always executed
+for one single analysis job, this node needs to be connected to the \node{GetMGXJob} node.\\
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.5\textwidth]{img/login-screen}
+\caption[\node{ReadCSF}]{The \node{ReadCSF} node is used to obtained metagenome sequence data 
+from within MGX; it has one input and needs to be connected to the \node{GetMGXJob} node.}
+\label{readcsf}
+\end{figure}
+
 accessing sequences\\
 filtering sequences\\
 creating attribute types\\
