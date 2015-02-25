@@ -56,7 +56,7 @@ nodes can be dragged from the list of all available nodes on the left and placed
 are created by clicking on a node, keeping the mouse button pressed and releasing it over the connections target
 node, thus creating the link; in ambiguous cases, e.g. for nodes with several unconnected
 inputs/outputs, a dialog will allow to select the desired connection.
-Nodes may also require node-specific configuration, 
+Nodes may also require node-specific configuration, which can be edited from a nodes context menu.
 A red border around a node indicates missing configuration items or connections.
 
 \begin{figure}[H]
@@ -111,7 +111,7 @@ from within MGX; it has one input and needs to be connected to the \node{GetMGXJ
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.8\textwidth]{img/conveyor/annotate_templ}
+\includegraphics[width=.85\textwidth]{img/conveyor/annotate_templ}
 \caption[Metagenome annotation]{Basic template to illustrate sequence annotation. A \node{StringGenerator} is
 used to generate a label for the attribute type (\node{CreateMGXAttributeType}), which also requires job context
 information. The attribute type is required to create attributes, thus the node is connected to the \node{CreateMGXAttribute} node. Finally, the annotation can be saved to the project database (\node{AnnotateAttribute} node).}
