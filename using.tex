@@ -2,23 +2,6 @@
 \chapter{Using the MGX application}
 \label{using}
 
-\section{Basic concepts}
-
-\subsection{Metadata}
-
-In addition to the sequence data, MGX requires a user to provide additional information
-about a dataset, e.g. further details about the investigated habitat as well as sampling
-and sequencing procedures. Metadata in the MGX platform is organized in a hierarchical
-manner describing
-
-\begin{itemize}
-  \item the geographical location of a habitat,
-  \item the sample taken from a habitat,
-  \item the DNA extraction procedure,
-  \item sequencing technology and protocol.
-\end{itemize}
-
-\subsection{Read-based analysis: Attributes and attribute types}
 
 \section{Obtaining a MGX project}
 
@@ -27,20 +10,22 @@ analyse your data using MGX, send a mail to the MGX team, which can be contacted
 \href{mailto:mgx@CeBiTec.Uni-Bielefeld.DE}{mgx@CeBiTec.Uni-Bielefeld.DE}. MGX projects
 and users are managed by the General Project Management System (GPMS) developed at CeBiTec,
 which provides Single Sign-On (SSO) for all applications provided by CeBiTec's Computational
-Genomics group.
+Genomics group.\\
 
-To apply for a new project, include information about
+To apply for a new project, please provide
 
 \begin{itemize}
-  \item suggested \textit{project name}, e.g. MGX\_AcidMine
-  \item a short \textit{one-line description} of your project (''Acid Mine Drainage metagenome'')
+  \item suggested short \textit{project name}, e.g. MGX\_AcidMine
+  \item a \textit{one-line description} of your project (''Acid Mine Drainage metagenome'')
   \item a \textit{contact address} of a single person responsible for the project (PI or group leader)
-  \item a \textit{list of all users} that should be granted project access, including
-    \begin{itemize}
-      \item Full name and email address for users not yet registered in the GPMS system, GPMS username otherwise
-      \item desired access level
-    \end{itemize}
+and the corresponding GPMS login name.
+  \item After project creation, additional users can be granted project access using 
+the MyCeBiTec (\url{https://www.cebitec.uni-bielefeld.de/mycebitec/}) site.
 \end{itemize}
+
+If you don't have a GPMS account yet, please sign up at the GPMS web site \url{https://www.cebitec.uni-bielefeld.de/gpms/}.
+
+\subsection{MGX roles}
 
 MGX offers different access levels (roles), which are assigned individually for each
 project: \\
@@ -55,14 +40,30 @@ all information already present, view analysis results and export data; however,
 unable to perform new analysis or delete data from the project.
 \end{itemize}
 
+For all MGX projects, the person requesting the project is automatically added as an \textbf{Admin}.
 As new users can always be added to an existing MGX project, all registered users are required
 to carefully protect their login credentials and not to share them with any third party.
 
+\section{Basic concepts}
+\subsection{Metadata}
+
+In addition to the sequence data, MGX requires a user to provide additional information
+about a dataset, e.g. further details about the investigated habitat as well as sampling
+and sequencing procedures. Metadata in the MGX platform is organized in a hierarchical
+manner describing
+
+\begin{itemize}
+  \item the geographical location of a habitat,
+  \item the sample taken from a habitat,
+  \item the DNA extraction procedure,
+  \item sequencing technology and protocol.
+\end{itemize}
+
 \section{Connecting to a MGX server}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
-\includegraphics[width=.8\textwidth]{img/mgx/startup}
+\includegraphics[width=\textwidth]{img/mgx/startup}
 \caption[MGX client]{Screenshot of the client application right after startup.}
 \label{startup}
 \end{figure}
@@ -73,7 +74,7 @@ should be used, the default server can be changed choosing Tools \textrightarrow
 and navigating to the MGX server tab (\ref{config-site}). While the site name can be freely
 chosen by the user, the server URL has to be entered as provided by the site administrators.
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \includegraphics[width=.8\textwidth]{img/mgx/config-site}
 \caption[Server configuration]{A different default server instance can optionally be configured in the MGX 
@@ -103,7 +104,7 @@ nodes in the Project Explorer window (\ref{projects}).\\
 \includegraphics[width=.8\textwidth]{img/mgx/projects}
 \caption[Project Explorer]{After successful login, the Project Explorer component will automatically open,
 showing a list of MGX projects available to the current user. Shown is just one project, MGX\_Demo, with
-access level indicated behind the project name.}
+``User'' access level indicated behind the project name.}
 \label{projects}
 \end{figure}
 
@@ -176,7 +177,7 @@ metatranscriptome, amplicon) and protocols used to extract the DNA.}
 \centering
 \includegraphics[width=.8\textwidth]{img/mgx/extractwiz2}
 \caption[DNA extract wizard]{Depending on DNA extract type, additional data can be entered; for amplicons, primer
-names and the corresponding target gene (fragment) can be entered, for metatransriptomes, the type of RNA depletion
+names and the corresponding target gene (fragment) can be entered, for metatranscriptomes, the type of RNA depletion
 methods can be selected.}
 \label{extractwiz2}
 \end{figure}
@@ -187,8 +188,8 @@ methods can be selected.}
 \centering
 \includegraphics[width=.8\textwidth]{img/mgx/runwiz1}
 \caption[Sequence import]{Before sequence data can be uploaded, the employed sequencing platform and technology have 
-to be specified; for data already submitted to or obtained from public repositories, the corresponding accession
-number can be added, as well.}
+to be specified; for data already submitted to or obtained from public INSDC repositories (e.g. NCBI, EBI, DDBJ), the
+corresponding accession number can be added, as well.}
 \label{dnawiz1}
 \end{figure}
 
@@ -202,26 +203,32 @@ file formats such as FASTA, FASTQ, or SFF.}
 
 \section{Quality control}
 
-After sequence import, Quality control reports generated within MGX should be inspected. 
+\begin{figure}[H]
+\centering
+\includegraphics[width=.6\textwidth]{img/mgx/QCopen}
+\caption[Quality control]{After selecting a sequencing run object, the Quality Control component can be opened
+from its menubar icon (red circle).}
+\label{qcopen}
+\end{figure}
+
+After sequence import, Quality control reports generated within MGX should be inspected (\ref{qcopen}).
 MGX currently offers three types of QC reports: Distribution of GC content, sequence length
 and nucleotide distribution within the DNA sequences. Those can be used to evaluate overall
 sequence data quality and check for possible signs of contamination.
-
-TODO: icon for QC
-
-Data shown relates to the artificial \textbf{simHC} metagenome dataset created by the
-FAMeS\cite{SIMMETA} project. The acutal sequence data can be obtained from \url{http://fames.jgi-psf.org/Retrieve_data.html}.
+For demonstration purposes, data shown relates to the artificial \textbf{simHC} metagenome dataset created by the
+FAMeS\cite{SIMMETA} project. The actual sequence data is publicly available and can be obtained from
+the FAMeS web site (\url{http://fames.jgi-psf.org/Retrieve_data.html}).
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.8\textwidth]{img/mgx/QCgc}
+\includegraphics[width=.6\textwidth]{img/mgx/QCgc}
 \caption[Quality control]{GC distribution of the simHC dataset.}
 \label{qc1}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.8\textwidth]{img/mgx/QCnuc}
+\includegraphics[width=.6\textwidth]{img/mgx/QCnuc}
 \caption[Quality control]{Nucleotide distribution of the simHC dataset. A high fraction of uncalled bases
 is apparent from the chart.}
 \label{qc2}
@@ -229,14 +236,12 @@ is apparent from the chart.}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.8\textwidth]{img/mgx/QCreadlen}
+\includegraphics[width=.6\textwidth]{img/mgx/QCreadlen}
 \caption[Quality control]{Read length distribution of the simHC dataset. }
 \label{qc3}
 \end{figure}
 
-\subsection{Examples}
-
-\begin{figure}
+\begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{img/mgx/highGCnucl}
@@ -251,21 +256,29 @@ is apparent from the chart.}
                 \caption{Adapter residue}
         \end{subfigure}
         \caption{Nucleotide distribution examples}
+  \label{qc4}
 \end{figure}
 
-
+Depending on the kind of sequence data, different patterns might emerge (\ref{qc4}),
+which might or might not warrant any further action. While small amounts of e.g. 
+adapter residue are often encountered and considered acceptable, it is up to the
+individual researcher to check back with their sequencing provider and ask for
+adapter sequences to execute additional trimming.
 
 \section{Defining and executing analysis jobs}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.8\textwidth]{img/mgx/analysiswiz1}
-\caption[Analysis selection]{TODO}
+\caption[Analysis selection]{Analysis pipelines can be selected from the corresponding
+MGX project itself, from the repository of public pipelines provided by the server, or,
+a custom workflow can be uploaded and executed.}
 \label{anawiz1}
 \end{figure}
 
-All analysis pipelines can be started from the context menu of the metagenome dataset to be analyzed. First,
-the used can choose the desired pipeline from the project itself, from the pipeline repository hosted on the
+All analysis pipelines can be started from the context menu of the metagenome dataset to be analyzed, provided
+the user has at least ``User'' level access. First,
+the user can choose the desired pipeline from the project itself, from the pipeline repository hosted on the
 MGX server, or upload an own pipeline implementation (\ref{anawiz1}). Subsequently, analysis parameters
 can be reviewed and adapted (\ref{anawiz2}) before submitting an analysis.
 
@@ -287,10 +300,144 @@ only one single parameter.}
 \end{figure}
 
 \subsection{Monitoring job progress}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.6\textwidth]{img/mgx/JobMonOpen}
+\caption[Job monitor]{The Job Monitor component can be opened using its icon in the toolbar.}
+\label{jobmon1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.6\textwidth]{img/mgx/JobMon}
+\caption[Job monitor]{The Job Monitor provides an overview of job states. Depending on context, all jobs
+within a MGX project or only jobs for a single dataset will be displayed.}
+\label{jobmon2}
+\end{figure}
+
+The Job Monitor component is provided to inspect the state of jobs present within a MGX project.
+It can be started from the toolbar (\ref{jobmon1} )and will display the state of jobs scheduled for execution,
+currently running or already finished (\ref{jobmon2}). In addition, it can also be used to delete jobs and
+corresponding analysis results when no longer needed. Depending on the selected item in the
+Project Explorer, the Job Monitor will by default display all jobs within a project; if a single
+sequencing run is selected, only jobs for this dataset will be shown.
+
 \section{Visualization of results}
-\subsection{Choosing data sets}
-\subsection{Choosing a visualisation type}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.6\textwidth]{img/mgx/VizOpen}
+\caption[Visualization]{Icon for the visualization module.}
+\label{viz1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.8\textwidth]{img/mgx/VizComponent}
+\caption[Visualization components]{Components of the visualization module. The bottom window is
+used to create and define groups, while the top window allows to select result and visualization
+type, customize options and display the final chart.}
+\label{viz2}
+\end{figure}
+
+The visualization component actually consists of two separate windows (\ref{viz2}). The Group
+Window is located at the bottom and used to create, name and define groups used for data display.
+Sequencing runs can be added to individual groups using \textit{Drag and Drop}. While any
+sequencing run can be present in several groups at the same time, it is not possible to add
+it to a group more than once. Groups may be assigned a name, their display color can be chosen
+by the user, and they may be temporarily excluded from display.\\
+The main visualization window is shown at the top; once sequencing runs are added or changed, 
+the type of analysis result to be shown can be chosen on the top right. Afterwards, the desired
+visualization type is selected and may be customized, as well.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{img/mgx/VizDemo}
+\caption[Visualization example]{Visualization example displaying a bar chart for two groups.}
+\label{viz3}
+\end{figure}
+
+Figure \ref{viz3} shows a simple visualization example. Two groups were defined containing the simLC and simMC metagenomes
+in the first and the simHC metagenome in the second group. The main visualization window shows a bar chart
+generated for these groups based on assigned EC numbers. To account for differences in dataset size, both
+groups are normalized to fractions.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.8\textwidth]{img/mgx/ConflictResolver}
+\caption[Job selection]{When a result is provided by more than one job, e.g. different taxonomic assignment methods,
+a dialog allows to select between jobs. In this example, taxonomic assignments are provided by Kraken\cite{KRAKEN}
+as well as MetaCV\cite{METACV}.}
+\label{viz4}
+\end{figure}
+
+In case a selected result is provided by more than one analysis job, an interactive dialog allow the user to
+review possible jobs and select one (\ref{viz4}). This scenario will occur when a tool is executed several 
+times with different parameters, or when different taxonomic classifiers were used to analyse a dataset.
+
 \subsection{Exporting sequences}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.8\textwidth]{img/mgx/SeqExport}
+\caption[Exporting sequences]{Sequences can be exported for each group individually. The user can freely choose
+which attributes should be included.}
+\label{seqexp}
+\end{figure}
+
+The sequence export wizard allows to export sequences conditionally based on analysis results. For each
+visualization group, it is possible to choose the attributes for which sequences should be obtained (\ref{seqexp}).
+Sequences are subsequently downloaded from the MGX server and saved in FASTA format files for each group.
+
+
+\subsection{Biodiversity indices}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{img/mgx/BioDiversity}
+\caption[Biodiversity]{Biodiversity indices (bottom left) such as ACE or Shannon are computed for the currently
+selected visualization group.}
+\label{biodiv}
+\end{figure}
+
+The visualization module features another component used to display commonly used biodiversity indices, such as
+the ACE, Shannon, Chao1 and Simpson indices. The component will automatically show the index values for the
+currently selected visualization group based on the chosen attribute type (\ref{biodiv}).
+
+\section{Reference mapping}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{img/mgx/RefMapping}
+\caption[Reference mapping]{The reference mapping component showing alignment results for a metatranscriptome dataset mapped to the reference genome of one of the dominant organisms. From top to bottom, the component displays a) navigation and coverage histogram, b) currently selected interval and c) aligned DNA sequences for the interval. Color coding refers to relative sequence identity.}
+\label{refmap}
+\end{figure}
+
+Alignment of metagenome or metatranscriptome data to reference sequences of known origin allows researchers to evaluate
+relative identity between metagenome sequences and the actual strain or to obtain an overview of gene expression within
+a meta-transcriptome. MGX currently provides predefined pipelines employing FR-HIT\cite{FRHIT} and Bowtie 2\cite{BOWTIE}. The reference mapping 
+component is provided to inspect and browse alignment results.
+
 \section{Search}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=.5\textwidth]{img/mgx/SearchOpen}
+\caption[Metagenome search]{Icon for the metagenome search component.}
+\label{search1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.9\textwidth]{img/mgx/SearchTC}
+\caption[Metagenome search]{Search component showing results for the term ``polymeras''. The search was performed
+within the select metagenomes simHC and simLC (top left); the bottom part shows an individual sequence identified
+by the search. Search results are displayed together with all other attributes available for a sequences, thus allowing
+to identify co-occurence of results.}
+\label{search2}
+\end{figure}
+
+
+TODO
 
