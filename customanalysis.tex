@@ -177,7 +177,7 @@ will be explained in more detail.
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{img/conveyor/TreeAnnot}
-\caption[Hierarchical attributes]{The \node{CreateHierarchicalMGXAttribute} node required three loops
+\caption[Hierarchical attributes]{The \node{CreateHierarchicalMGXAttribute} node requires three loops (note double-ended arrow on third loop)
 to create the internal structure of the hierarchy. Several connections were removed from the figure
 for illustrative purposes.}
 \label{annot5}
@@ -188,8 +188,8 @@ into the node (\ref{annot5}).
 The first loop is required to obtain the objects parent object, thus defining the hierarchy. In this example
 it is implemented using the \texttt{GetParent} and \texttt{GetMajorRankedTaxon} nodes, thus making sure only
 the major taxonomic ranks (superkingdom, phylum, class, \dots) are included.\\
-The second loop is used to obtain the corresponding attribute type for the parent: it operates on the parent
-object obtained by the first loop. \texttt{GetTaxonRank} and \texttt{GetRankName} nodes provide the corresponding
+The second loop is used to obtain the corresponding attribute type for an object: it operates on the initial taxon as well as its parents
+obtained by the first loop. \texttt{GetTaxonRank} and \texttt{GetRankName} nodes provide the corresponding
 ranks' name, e.g. ``class''; The \texttt{StringGenerator} and \texttt{Concat} nodes are then used to create the
 attribute type: ``NCBI\_class''. This value is used to create the corresponding attribute type employing the
 \node{CreateMGXAttributeType} node, which is returned into the \node{CreateHierarchicalMGXAttribute} node.\\
@@ -199,9 +199,9 @@ it is built up using the \texttt{GetTaxonName} node, which delivers its output b
 Thus, the three loops might be termed as \textbf{Get parent}, \textbf{Get AttributeType for object} and
 \textbf{Generate value}. 
 
-The \node{CreateHierarchicalMGXAttribute} node emits an initial MGXAttribute for the incoming data object,
+The \node{CreateHierarchicalMGXAttribute} node emits a hierarchical MGXAttribute for the initial data object,
 with the corresponding AttributeType provided by loop 2 and the MGXAttribute's value obtained using loop 3.
-Subsequently, loop 1 is used repetitively until the root node is reached, with all intermediary results
+Internally, loop 1 is used repetitively until the root node is reached, with all intermediary results
 passing through loops 2 and 3, thus generating a single path of hierarchical attributes within the taxonomic
 tree. The output of the \node{CreateHierarchicalMGXAttribute} is connected to the \node{AnnotateAttribute}
 node as in the previous example.
