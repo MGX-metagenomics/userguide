@@ -142,21 +142,25 @@ provide the necessary metagenome sequences to be annotated. Still, there is no a
 In a second step, we use the \node{ReadCSF} node to obtain access to the individual metagenome sequences; as 
 MGX annotates sequences individually, a connection between \node{ReadCSF} and \node{AnnotateAttribute} is
 required (\ref{annot2}). Subsequently, we implement the actual analysis, which is provided by the \node{GCContent}
-node. It will process all sequences sequentially and the GC content will be used to create a corresponding
-attribute (\ref{annot3}).
+node. It will process all sequences and emit the corresponding GC content for each of them. To convert these values to
+appropriate ``attributes'', an ``attribute type'' is required for each value; therefore, a \node{Repeat}
+node is inserted between nodes 5 and 7 (\ref{annot3}).
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.8\textwidth]{img/conveyor/annotate_templ3}
 \caption[Metagenome annotation]{Step 2: The \node{GCContent} node represents the actual analysis step; it is used
-to determine the GC content of a DNA sequence, which will then be converted into an ``attribute''.}
+to determine the GC content of a DNA sequence, which will then be converted into an ``attribute''. Since an 
+``attribute type'' is required for each ``attribute'', a \node{Repeat} node is inserted between nodes 5 and 7.}
 \label{annot3}
 \end{figure}
 
 Finally, as an annotation always refers to only a part of a sequence, we will need to generate the corresponding
 start and end coordinates; since GC content refers to the full sequence, we can use an \node{ULongGenerator} node
-configured to emit 0 (MGX uses 0-based coordinates) to generate the start coordinate; the end coordinate can be
-created based on the sequences' length, obtained through the \node{GetLength} node (\ref{annot4}).\\
+configured to emit 0 (MGX uses 0-based coordinates) to generate the start coordinate; this node needs to be connected to
+a \node{Repeat} node to generate a series of 0s.\\
+The end coordinate can be created based on the sequences' length, with 1 subtracted, obtained through the
+\node{GetLength} and \node{MinusOne} nodes (\ref{annot4}).\\
 The \node{GetMGXJob} node will retain its red border due to missing configuration; this, however, can be
 ignored, as appropriate configuration will be provided by the MGX framework automatically.
 
@@ -164,7 +168,8 @@ ignored, as appropriate configuration will be provided by the MGX framework auto
 \centering
 \includegraphics[width=.9\textwidth]{img/conveyor/annotate_templ4}
 \caption[Metagenome annotation]{Completing the workflow: the \node{ULongGenerator} and \node{GetLength} nodes
-are added to specify coordinates for the subregion of the DNA sequence described by the ``attribute''.}
+are added to specify coordinates for the subregion of the DNA sequence described by the ``attribute''; the
+start coordinate is simply repeated, while 1 is subtracted from the sequences length due to 0-based coordinates.}
 \label{annot4}
 \end{figure}
 
