@@ -176,7 +176,7 @@ metatranscriptome, amplicon) and protocols used to extract the DNA.}
 \begin{figure}[H]
 \centering
 \includegraphics[width=.8\textwidth]{img/mgx/extractwiz2}
-\caption[DNA extract wizard]{Depending on DNA extract type, additional data can be entered; for amplicons, primer
+\caption[DNA extract wizard]{Depending on DNA extract type, additional data can be provided; for amplicons, primer
 names and the corresponding target gene (fragment) can be entered, for metatranscriptomes, the type of RNA depletion
 methods can be selected.}
 \label{extractwiz2}
@@ -189,7 +189,7 @@ methods can be selected.}
 \includegraphics[width=.8\textwidth]{img/mgx/runwiz1}
 \caption[Sequence import]{Before sequence data can be uploaded, the employed sequencing platform and technology have 
 to be specified; for data already submitted to or obtained from public INSDC repositories (e.g. NCBI, EBI, DDBJ), the
-corresponding accession number can be added, as well.}
+corresponding accession number can be stored, as well.}
 \label{dnawiz1}
 \end{figure}
 
@@ -211,7 +211,7 @@ from its menubar icon (red circle).}
 \label{qcopen}
 \end{figure}
 
-After sequence import, Quality control reports generated within MGX should be inspected (\ref{qcopen}).
+After sequence import, Quality control reports generated within MGX should be inspected (\ref{qcopen}) before proceding with data analysis.
 MGX currently offers three types of QC reports: Distribution of GC content, sequence length
 and nucleotide distribution within the DNA sequences. Those can be used to evaluate overall
 sequence data quality and check for possible signs of contamination.
@@ -261,7 +261,7 @@ is apparent from the chart.}
 
 Depending on the kind of sequence data, different patterns might emerge (\ref{qc4}),
 which might or might not warrant any further action. While small amounts of e.g. 
-adapter residue are often encountered and considered acceptable, it is up to the
+adapter residue are sometimes encountered and might be considered acceptable, it is up to the
 individual researcher to check back with their sequencing provider and ask for
 adapter sequences to execute additional trimming.
 
@@ -277,7 +277,7 @@ a custom workflow can be uploaded and executed.}
 \end{figure}
 
 All analysis pipelines can be started from the context menu of the metagenome dataset to be analyzed, provided
-the user has at least ``User'' level access. First,
+the user has been granted at least ``User'' level access. First,
 the user can choose the desired pipeline from the project itself, from the pipeline repository hosted on the
 MGX server, or upload an own pipeline implementation (\ref{anawiz1}). Subsequently, analysis parameters
 can be reviewed and adapted (\ref{anawiz2}) before submitting an analysis.
@@ -317,7 +317,7 @@ within a MGX project or only jobs for a single dataset will be displayed.}
 \end{figure}
 
 The Job Monitor component is provided to inspect the state of jobs present within a MGX project.
-It can be started from the toolbar (\ref{jobmon1} )and will display the state of jobs scheduled for execution,
+It can be opened from the toolbar (\ref{jobmon1} )and will display the state of jobs scheduled for execution,
 currently running or already finished (\ref{jobmon2}). In addition, it can also be used to delete jobs and
 corresponding analysis results when no longer needed. Depending on the selected item in the
 Project Explorer, the Job Monitor will by default display all jobs within a project; if a single
@@ -402,7 +402,7 @@ selected visualization group.}
 \end{figure}
 
 The visualization module features another component used to display commonly used biodiversity indices, such as
-the ACE, Shannon, Chao1 and Simpson indices. The component will automatically show the index values for the
+the ACE, Shannon\cite{SHANNON}, Chao1\cite{DIVERSITY} and Simpson\cite{SIMPSON} indices. The component will automatically show the index values for the
 currently selected visualization group based on the chosen attribute type (\ref{biodiv}).
 
 \section{Reference mapping}
