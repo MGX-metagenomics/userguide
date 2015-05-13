@@ -265,6 +265,40 @@ adapter residue are sometimes encountered and might be considered acceptable, it
 individual researcher to check back with their sequencing provider and ask for
 adapter sequences to execute additional trimming.
 
+\section{Uploading own files}
+
+For each project, MGX provides dedicated storage in order to allow users to
+provide custom data, subsequently to be used with analysis pipelines. Thus,
+own sequence collections or HMM model files for genes of interest can easily
+be uploaded and later on be included into analysis pipelines.\\
+
+FIXME: Screenshot MGX file storage
+
+While it may be necessary to implement an own pipeline depending on the
+desired kind of analysis, the MGX repository hosts predefined pipeline
+templates addressing the most common cases: The ``BestHit-Blast'' template
+can be used to annotate metagenome sequences with the description of a
+Blast hit after the user has uploaded a FASTA file containing amino acid
+sequences, and the ``BestHit-HMM'' template provides the same functionality
+for hidden Markov models (HMMs).
+
+\section{Importing reference genomes}
+
+MGX provides several analysis pipelines to align metagenome reads to reference genomes;
+before these pipelines can be used, the corresponding reference genome has to be added
+to the project. There are two possible ways to achieve this: The MGX repository hosts
+published and annotated reference genomes obtained from the NCBI; in addition, users
+may choose to upload a custom reference sequence in FASTA, GenBank or EMBL format, e.g.
+a finished but unpublished genome not available from official sources.\\
+
+To add a reference genome, right-click on the ``Reference sequences'' node within the
+project view and select either ``Add reference'' to access the MGX repository or 
+``Upload EMBL/GenBank/FASTA reference'' to provide an own sequence.\\
+
+Once the import is complete, the reference genome is available for analysis and 
+can be selected for the corresponding analysis pipelines which provide reference
+mapping, e.g. BowTie or FR-HIT.
+
 \section{Defining and executing analysis jobs}
 
 \begin{figure}[H]
