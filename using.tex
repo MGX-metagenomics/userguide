@@ -469,10 +469,23 @@ mapping, e.g. BowTie or FR-HIT.
 \label{refmap}
 \end{figure}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{img/mgx/FragRecruitment}
+\caption[Fragment recruitment]{An alternate visualization mode is the generation of fragment recruitment plots, here showing the
+same data as described previously (\ref{refmap}). The view mode features the fragment recruitment plot itself and additionally
+provides stacked bars summarizing mapping identity within reference intervals, grouped into low (red), medium (yellow, $\ge$ 75\%) and
+high (green, $\ge$ 97\%) quality mappings.}
+\label{fragrec}
+\end{figure}
+
+
 Alignment of metagenome or metatranscriptome data to reference sequences of known origin allows researchers to evaluate
 relative identity between metagenome sequences and the actual strain or to obtain an overview of gene expression within
-a meta-transcriptome. MGX currently provides predefined pipelines employing FR-HIT\cite{FRHIT} and Bowtie 2\cite{BOWTIE}. The reference mapping 
-component is provided to inspect and browse alignment results.
+a meta-transcriptome. MGX currently provides predefined pipelines employing BLAST\cite{BLAST}, FR-HIT\cite{FRHIT} and Bowtie 2\cite{BOWTIE}.
+The reference mapping component is provided to inspect and browse alignment results, offering both a generic alignment view
+where each mapped sequence is colored according to mapping identity, as well as a fragment recruitment view. Switching between
+view modes is possible from the context menu of the mapping component.
 
 \section{Search}
 
