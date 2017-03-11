@@ -1,0 +1,19 @@
+notifications:
+  email:
+    recipients:
+      - sebastian@jaenicke.org
+
+language: bash
+
+dist: trusty
+
+branches:
+  only:
+    - master
+
+before_install:
+  - sudo apt-get update -qq
+
+script:
+  - make
+
