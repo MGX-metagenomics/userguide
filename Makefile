@@ -22,4 +22,5 @@ $(TEXSRC).bbl:	ref.bib $(TEXSRC).aux
 
 $(TEXSRC).pdf:	$(TEXSRC).tex $(TEXSRC).bbl
 		$(LATEX) $(TEXSRC).tex
+		$(LATEX) $(TEXSRC).tex
 
