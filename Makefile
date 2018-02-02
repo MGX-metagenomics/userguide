@@ -3,8 +3,10 @@
 TEXSRC		= main
 INPUT		= ref.bib $(wildcard *.tex)
 
-LATEX		= pdflatex
+PDFLATEX	= pdflatex
+LATEX		= latex
 BIBTEX		= bibtex
+HTML		= latex2html
 
 all:		$(TEXSRC).pdf
 
@@ -12,15 +14,17 @@ clean:
 		rm -f *.aux *.log *.lof *.lot *.out *.toc $(TEXSRC).bbl $(TEXSRC).blg  
 
 realclean:	clean
-		rm -f $(TEXSRC).pdf
+		rm -rf $(TEXSRC).pdf $(TEXSRC).dvi main/
 
 $(TEXSRC).aux:	main.tex
-		$(LATEX) $(TEXSRC).tex
+		$(PDFLATEX) $(TEXSRC).tex
 
 $(TEXSRC).bbl:	ref.bib $(TEXSRC).aux
 		$(BIBTEX) $(TEXSRC)
 
 $(TEXSRC).pdf:	$(TEXSRC).tex $(TEXSRC).bbl
+		$(PDFLATEX) $(TEXSRC).tex
+		$(PDFLATEX) $(TEXSRC).tex
 		$(LATEX) $(TEXSRC).tex
-		$(LATEX) $(TEXSRC).tex
+		$(HTML) -address "Sebastian Jaenicke, `date +%F`" $(TEXSRC).tex
 
