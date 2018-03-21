@@ -27,4 +27,5 @@ $(TEXSRC).pdf:	$(TEXSRC).tex $(TEXSRC).bbl
 		$(PDFLATEX) $(TEXSRC).tex
 		$(LATEX) $(TEXSRC).tex
 		$(HTML) -address "Sebastian Jaenicke, `date +%F`" $(TEXSRC).tex
+		rm -f main/WARNINGS main/*.pl main/images.*
 
