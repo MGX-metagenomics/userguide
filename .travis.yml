@@ -16,5 +16,11 @@ before_install:
   - sudo apt-get install -y texlive-latex-base texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra texlive-latex-recommended
 
 script:
+  - wget https://github.com/latex2html/latex2html/archive/v2018.tar.gz
+  - tar xzf v2018.tar.gz
+  - cd latex2html-2018
+  - ./configure
+  - make && make install
+  - cd ..
   - make
 
