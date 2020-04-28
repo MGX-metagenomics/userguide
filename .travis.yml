@@ -5,7 +5,7 @@ notifications:
 
 language: bash
 
-dist: trusty
+dist: bionic
 
 branches:
   only:
