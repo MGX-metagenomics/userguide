@@ -6,16 +6,16 @@
 \section{Obtaining a MGX project}
 
 Currently, there is no way to automatically create new MGX projects. If you would like to
-analyse your data using MGX, send a mail to the MGX team, which can be contacted at 
-\href{mailto:mgx@computational.bio.Uni-Giessen.DE}{mgx@computational.bio.Uni-Giessen.DE}. MGX projects
-and users are managed by the General Project Management System (GPMS) developed at CeBiTec,
-which provides Single Sign-On (SSO) for all applications provided by CeBiTec's Computational
-Genomics group.\\
+analyze your metagenome or metatranscriptome data with MGX, please send a mail to the MGX team,
+which can be contacted at \href{mailto:mgx@computational.bio.Uni-Giessen.DE}{mgx@computational.bio.Uni-Giessen.DE}.
+MGX projects and users are managed by the General Project Management System (GPMS) developed at CeBiTec (Bielefeld
+University), which provides Single Sign-On (SSO) for all our applications.\\
 
+\noindent
 To apply for a new project, please provide
 
 \begin{itemize}
-  \item suggested short \textit{project name}, e.g. MGX\_AcidMine
+  \item a short \textit{project name}, e.g. MGX\_AcidMine
   \item a \textit{one-line description} of your project (''Acid Mine Drainage metagenome'')
   \item a \textit{contact address} of a single person responsible for the project (PI or group leader)
 and the corresponding GPMS login name.
@@ -31,7 +31,7 @@ MGX offers different access levels (roles), which are assigned individually for 
 project: \\
 
 \begin{itemize}
-  \item{\textbf{Admins} are equal to Users (see below), but can grant access to additional users.}
+  \item{\textbf{Admins} are equal to Users (see below), but can request access to be granted to additional users.}
   \item \textbf{Users} have full access to a MGX project and are able to define new or modify
 present datasets, import new sequences and execute analysis jobs. They are also able to
 delete all data associated with a project.
@@ -40,6 +40,7 @@ all information already present, view analysis results and export data; however,
 unable to perform new analysis or delete data from the project.
 \end{itemize}
 
+\noindent
 For all MGX projects, the person requesting the project is automatically added as an \textbf{Admin}.
 As new users can always be added to an existing MGX project, all registered users are required
 to carefully protect their login credentials and not to share them with any third party.
@@ -69,9 +70,9 @@ manner describing
 \end{figure}
 
 After installation, the MGX application is already preconfigured to connect to the 
-MGX server instance hosted at CeBiTec, Bielefeld University. In case a different MGX server
+MGX server instance hosted at Justus Liebig University Giessen (JLU). In case a different MGX server
 should be used, the default server can be changed choosing Tools $\rightarrow$ Options from the menu
-and navigating to the MGX server tab (\ref{config-site}). While the site name can be freely
+and navigating to the MGX server tab (Fig. \ref{config-site}). While the site name can be freely
 chosen by the user, the server URL has to be entered as provided by the site administrators.
 
 \begin{figure}[H]
@@ -94,10 +95,11 @@ All communication between the MGX user interface and the MGX server is encrypted
 the standardized SSL (Secure Sockets Layer) protocol, ensuring confidentiality of 
 unpublished data and protecting the integrity of login credentials.
 %\section{Browsing and exploring MGX projects}
-After successfully logging in, a new window is automatically opened. The MGX Explorer window
+After successfully logging in, the Project Overview window
 lists all available projects a user is allowed to access, including both public as well as
-private projects. Projects are easily opened or closed by simply expanding the corresponding
-nodes in the Project Explorer window (\ref{projects}).\\
+private projects. For each project, the role of the current user is given in brackets.
+Projects are easily opened or closed by simply expanding the corresponding
+nodes in the Project Explorer window (Fig.~\ref{projects}).\\
 
 \begin{figure}[H]
 \centering
@@ -111,14 +113,15 @@ showing a list of MGX projects available to the current user. Shown is just one 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.4\textwidth]{img/mgx/projstructure}
-\caption[Project structure]{Divided into three different parts, a MGX projects offers
+\caption[Project structure]{Divided into four different sections, a MGX projects offers
 (from top to bottom) dedicated storage for files to be used by analysis pipelines, 
 managed reference sequences (including annotation data, if available) and general
-project data containing metadata as well as sequence datasets.}
+project data containing metadata as well as sequence datasets. An additional section
+provides access to metagenome and metatranscriptome assemblies.}
 \label{structure}
 \end{figure}
 
-Each project contains metagenome datasets as well as structured storage (\ref{structure}), where user-provided
+Each project contains metagenome datasets as well as structured storage (Fig.~\ref{structure}), where user-provided
 databases can be uploaded to be used in custom analysis pipelines (Chapter \ref{custom}).
 
 \section{Creating a new habitat}
@@ -177,18 +180,28 @@ metatranscriptome, amplicon) and protocols used to extract the DNA.}
 \centering
 \includegraphics[width=.8\textwidth]{img/mgx/extractwiz2}
 \caption[DNA extract wizard]{Depending on DNA extract type, additional data can be provided; for amplicons, primer
-names and the corresponding target gene (fragment) can be entered, for metatranscriptomes, the type of RNA depletion
-methods can be selected.}
+names and the corresponding target gene (fragment) can be entered, for metatranscriptomes, the type of ribosomal 
+RNA depletion methods can be selected.}
 \label{extractwiz2}
 \end{figure}
 
 \section{Importing sequence data}
 
+Finally, sequence data can be imported into the MGX project by creating new ``sequencing run'' objects; using the
+corresponding wizard (Fig.~\ref{dnawiz1}), a name and details about the sequencing methodology such as platform
+and strategy can be deposited. Depending on whether single-end or paired-end/mate-pair data was selected, the
+wizard subsequently allows to select one or two files (Fig.~\ref{dnawiz2}).\\
+
+\noindent
+Give the large number of different sequencing adapters and barcoding schemes, MGX is unable to address all of
+them; hence, proper adapter removal, quality-based trimming (and filtering of \textit{e.g.}~host DNA should be
+performed before uploading datasets to MGX for analysis.\\
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=.8\textwidth]{img/mgx/runwiz1}
 \caption[Sequence import]{Before sequence data can be uploaded, the employed sequencing platform and technology have 
-to be specified; for data already submitted to or obtained from public INSDC repositories (e.g. NCBI, EBI, DDBJ), the
+to be specified; for data already submitted to or obtained from public INSDC repositories (\textit{e.g.}~NCBI, EBI, DDBJ), the
 corresponding accession number can be stored, as well.}
 \label{dnawiz1}
 \end{figure}
@@ -211,33 +224,31 @@ from its menubar icon (red circle).}
 \label{qcopen}
 \end{figure}
 
-After sequence import, Quality control reports generated within MGX should be inspected (\ref{qcopen}) before proceding with data analysis.
+After sequence import, quality control reports generated within MGX should be inspected (Fig.~\ref{qcopen}) before proceding with data analysis.
 MGX currently offers three types of QC reports: Distribution of GC content, sequence length
 and nucleotide distribution within the DNA sequences. Those can be used to evaluate overall
 sequence data quality and check for possible signs of contamination.
-For demonstration purposes, data shown relates to the artificial \textbf{simHC} metagenome dataset created by the
-FAMeS \cite{SIMMETA} project. The actual sequence data is publicly available and can be obtained from
-the FAMeS web site (\url{http://fames.jgi-psf.org/Retrieve_data.html}).
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.6\textwidth]{img/mgx/QCgc}
-\caption[Quality control]{GC distribution of the simHC dataset.}
+\caption[Quality control]{GC distribution of a public metagenome dataset (SRR3569370).}
 \label{qc1}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.6\textwidth]{img/mgx/QCnuc}
-\caption[Quality control]{Nucleotide distribution of the simHC dataset. A high fraction of uncalled bases
-is apparent from the chart.}
+\caption[Quality control]{Nucleotide distribution of the public metagenome. The chart displays the distribution
+of nucleotides within the first 100 bp.}
 \label{qc2}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.6\textwidth]{img/mgx/QCreadlen}
-\caption[Quality control]{Read length distribution of the simHC dataset. }
+\caption[Quality control]{Read length distribution of the metagenome dataset; here the sequencing
+data was imported without prior quality trimming.}
 \label{qc3}
 \end{figure}
 
@@ -259,9 +270,9 @@ is apparent from the chart.}
   \label{qc4}
 \end{figure}
 
-Depending on the kind of sequence data, different patterns might emerge (\ref{qc4}),
-which might or might not warrant any further action. While small amounts of e.g. 
-adapter residue are sometimes encountered and might be considered acceptable, it is up to the
+Depending on the kind of sequence data, different patterns may emerge (Fig.~\ref{qc4}),
+which might or might not warrant any further action. While small amounts of \textit{e.g.}~adapter
+residue are sometimes encountered and might be considered acceptable, it is up to the
 individual researcher to check back with their sequencing provider and ask for
 adapter sequences to execute additional trimming.
 
@@ -281,8 +292,8 @@ a custom workflow can be uploaded and executed.}
 All analysis pipelines can be started from the context menu of the metagenome dataset to be analyzed, provided
 the user has been granted at least ``User'' level access. First,
 the user can choose the desired pipeline from the project itself, from the pipeline repository hosted on the
-MGX server, or upload an own pipeline implementation (\ref{anawiz1}). Subsequently, analysis parameters
-can be reviewed and adapted (\ref{anawiz2}) before submitting an analysis.
+MGX server, or upload an own pipeline implementation (Fig.~\ref{anawiz1}). Subsequently, analysis parameters
+can be reviewed and adapted (Fig.~\ref{anawiz2}) before submitting an analysis.
 
 \begin{figure}[H]
 \centering
@@ -319,12 +330,29 @@ within a MGX project or only jobs for a single dataset will be displayed.}
 \end{figure}
 
 The Job Monitor component is provided to inspect the state of jobs present within a MGX project.
-It can be opened from the toolbar (\ref{jobmon1} )and will display the state of jobs scheduled for execution,
-currently running or already finished (\ref{jobmon2}). In addition, it can also be used to delete jobs and
+It can be opened from the toolbar (Fig.~\ref{jobmon1} )and will display the state of jobs scheduled for execution,
+currently running or already finished (Fig.~\ref{jobmon2}). In addition, it can also be used to delete jobs and
 corresponding analysis results when no longer needed. Depending on the selected item in the
 Project Explorer, the Job Monitor will by default display all jobs within a project; if a single
 sequencing run is selected, only jobs for this dataset will be shown.
 
+\section{Assembling a metagenome or metatranscriptome}
+
+Since MGX 2.0, we support the assembly and analysis of both metagenomes and metatranscriptomes; for this, we
+provide workflows targeting QC, (co-)assembly, gene prediction, taxonomic binning, completeness assessment, and
+abundance quantification. For metatranscriptomes, an additional step is implemented for the removal of ribosomal
+RNA sequences prior to the assembly, and binning is not performed.\\
+
+\noindent
+To create an assembly, select all sequencing runs that should be co-assembled within the Project Explorer window
+and select the ``Assemble'' entry from the context menu. Single-end data can be included into this process, but
+the corresponding workflows require that at least one paired-end dataset is provided, as this yields better assembly
+results. Also, only paired-end data is used for the taxonomic binning step, and we recommend to co-assemble multiple 
+paired-end datasets for an improved binning outcome.\\
+
+\noindent
+The assembly wizard requires to specify a name for the new assembly, and once the assembly workflow has been
+submitted, its state can be monitored from the Job Monitor (see above).
 \section{Visualization of results}
 
 \begin{figure}[H]
@@ -374,8 +402,9 @@ as well as MetaCV \cite{METACV}.}
 \label{viz4}
 \end{figure}
 
+\noindent
 Whenever a selected result type is provided by more than one analysis job, an interactive dialog allows the user to
-review possible jobs and select one (\ref{viz4}). This scenario will occur when a tool is executed several 
+review possible jobs and select one (Fig.~\ref{viz4}). This scenario will occur when a tool is executed several 
 times with different parameters, or when different taxonomic classifiers were used to analyse a dataset.
 
 \subsection{Exporting sequences}

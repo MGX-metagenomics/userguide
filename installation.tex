@@ -5,13 +5,13 @@
 \section{Prerequisites}
 
 MGX is a client/server application based on the Netbeans Platform and implemented
-in Java. To run the client application, the following dependencies have to be
+in Java. To run the MGX 2.0 client application, the following dependencies have to be
 met:
 
 \begin{itemize}
-  \item{Java Development Kit, 1.8 or later}
+  \item{Java Development Kit 17 or later}
   \item{Supported Operating Systems: Windows, Linux, Mac OS X}
-  \item{Memory requirements: $>=$ 2GB RAM}
+  \item{Memory requirements: $>=$ 4GB RAM}
   \item{(preferably broadband) Internet connection}
 \end{itemize}
 
@@ -20,22 +20,17 @@ met:
 MGX requires a working Java Development Kit (JDK) to be installed on the computer. Typically,
 Java is already installed on most systems or can be obtained free of charge from\\
 
-\url{http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html}.\\
-
-The installed Java version can be checked e.g. at\\
-
-\url{http://www.java.com/de/download/installed.jsp}.
+\url{https://openjdk.org/}.\\
 
 \subsection{Supported Operating Systems}
 
-The MGX application is developed and regularly used on Unix-based systems,
-but has already successfully been used on computers running Windows and
-Mac OS X.
+The MGX application is developed and regularly used on Unix-based systems, \textit{e.g.}~Linux,
+but is also compatible with computers running Windows or Mac OS X.
 
 \subsection{Memory and disk requirements}
 
-512MB of available main memory are sufficient to run MGX. Installation of the
-software requires about 60MB of disk space.
+4 GB of available main memory are sufficient to run MGX. Installation of the
+software requires about 100 MB of disk space.
 
 \subsection{Internet connection}
 
@@ -43,7 +38,7 @@ The network communication protocol used by the MGX framework has been heavily op
 allow usage even with low-throughput connections. Thus, typical usage of the application
 like visualization of analysis results does not require a lot of bandwidth, although
 overall performance may suffer with high-latency or low-bandwidth connections. However, as
-sequence datasets obtained by metagenome sequencing tend to be quite large, a broadband 
+sequence datasets obtained by metagenome and metatranscriptome sequencing tend to be quite large, a broadband 
 connection is recommended at least for initial data upload to the MGX server or when exporting
 sequence data from a MGX project.
 
@@ -54,6 +49,7 @@ available for download at\\
 
     \url{https://github.com/MGX-metagenomics/MGX-gui/releases}.\\
 
+\noindent
 An installation isn't necessary, just unzip the file and start the software
 from the \texttt{bin/} subdirectory (Linux: \texttt{mgx\_gui}; Windows: \texttt{mgx\_gui64.exe}). Please check whether an updated version
 is available before reporting bugs.
